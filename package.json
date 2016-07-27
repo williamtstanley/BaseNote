@@ -4,7 +4,8 @@
   "description": "Notes - Everywhere",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "test": "babel app/src --watch --out-dir app/js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,12 @@
   "author": "William Stanley",
   "license": "CC0-1.0",
   "devDependencies": {
-  "electron-prebuilt": "^1.2.0"
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
   }
 }

@@ -1,0 +1,23 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+.side-bar {
+  border-right: 1px solid black;
+  flex-grow: 1;
+}
+.side-bar h1 {
+  text-align: center;
+}
+
+.main-work-space {
+  flex-grow: 3;
+}
+.main-work-space h1 {
+  background-color: red;
+  text-align: center;
+}
+
+.window {
+  display: flex;
+}
