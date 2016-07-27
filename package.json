@@ -1,5 +1,5 @@
 {
-  "name": "ubiquNote",
+  "name": "BaseNote",
   "version": "0.0.1",
   "description": "Notes - Everywhere",
   "main": "main.js",
