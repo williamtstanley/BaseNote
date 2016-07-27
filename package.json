@@ -1,28 +1,24 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "ubiquNote",
+  "version": "0.0.1",
+  "description": "Notes - Everywhere",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/electron-quick-start.git"
+    "url": ""
   },
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial"
+    "Notes",
+    "Project",
+    "CRM"
   ],
-  "author": "GitHub",
+  "author": "William Stanley",
   "license": "CC0-1.0",
-  "bugs": {
-    "url": "https://github.com/electron/electron-quick-start/issues"
-  },
-  "homepage": "https://github.com/electron/electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "^1.2.0"
+  "electron-prebuilt": "^1.2.0"
   }
 }
