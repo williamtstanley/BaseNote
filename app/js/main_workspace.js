@@ -6,6 +6,11 @@ var MainWorkSpace = React.createClass({
       "div",
       { className: "main-work-space" },
       React.createElement(
+        "button",
+        { onClick: this.props.toggleVis },
+        "Toggle"
+      ),
+      React.createElement(
         "h1",
         null,
         "Main Work Space"
