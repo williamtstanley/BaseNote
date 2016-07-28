@@ -1,14 +1,21 @@
 var React = require('react');
 var ReactDom = require('react-dom');
-var Electron = require('electron')
+var Electron = require('electron');
+var MainWorkSpace = require('./main_workspace');
+var SideBar = require('./sidebar');
+
+const shell = require('electron').shell
+const os = require('os')
+
 Electron.ipcRenderer.on('ping', (event, message) => {
-   console.log(message)  // Prints 'whoooooooh!'
+   console.log(message)
   })
-var SideBar = React.createClass({
+
+var App = React.createClass({
   getInitialState: function(){
     return {
-      display: 'block',
-      windowHeight: window.innerHeight
+      windowHeight: window.innerHeight,
+      display: "block"
     };
   },
   handleResize: function(){
@@ -20,48 +27,28 @@ var SideBar = React.createClass({
   componentWillUnmount: function(){
     window.removeEventListener('resize', this.handleResize);
   },
-  sideToggle: function(){
-    // if (this.state.display === 'block'){
-    //   this.setState({
-    //     display: 'none'
-    //   })
-    // }else{
-    //   this.setState({
-    //     display: 'block'
-    //   })
-    // }
-    console.log(window.innerHeight)
-  },
-  render: function(){
-    var styles = {
-      minHeight: this.state.windowHeight,
-      display: this.state.display
+  toggleVis: function(){
+    if(this.state.display === "block"){
+      this.setState({display: "none"});
+    }else{
+      this.setState({display: "block"});
     }
-    return (
-      <div style={styles} className="side-bar" onClick={this.sideToggle}>
-        <h1>Side Bar</h1>
-        <div>Current window height: {this.state.windowHeight} </div>
-      </div>
-    );
-  }
-});
-
-var MainWorkSpace = React.createClass({
-  render: function(){
-    return (
-      <div className="main-work-space">
-        <h1>Main Work Space</h1>
-      </div>
-    );
-  }
-});
-
-var App = React.createClass({
+  },
+  //Allows access to the open file window opens selected file in the default application
+  openFile: function(){
+    shell.showItemInFolder(os.homedir());
+  },
   render: function() {
     return (
       <div className="window">
-        <SideBar />
-        <MainWorkSpace />
+        <SideBar
+          display={this.state.display}
+          windowHeight={this.state.windowHeight}  
+        />
+        <MainWorkSpace
+          toggleVis={this.toggleVis}
+          openFile={this.openFile}
+        />
       </div>
     );
   }
