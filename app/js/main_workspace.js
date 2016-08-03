@@ -1,19 +1,17 @@
 var React = require('react');
+var MainHeaderBar = require('./main_headerbar');
+var NotePad = require('./notepad');
 
 var MainWorkSpace = React.createClass({
   render: function () {
     return React.createElement(
-      "div",
-      { className: "main-work-space" },
+      'div',
+      { className: 'main-work-space' },
+      React.createElement(MainHeaderBar, null),
       React.createElement(
-        "button",
-        { onClick: this.props.toggleVis },
-        "Toggle"
-      ),
-      React.createElement(
-        "h1",
-        null,
-        "Main Work Space"
+        'div',
+        { className: 'notepad-container' },
+        React.createElement(NotePad, null)
       )
     );
   }

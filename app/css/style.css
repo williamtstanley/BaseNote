@@ -1,17 +1,67 @@
+/* colors */
+/* Smokey Black = #0A100D */
+/* Mughal green = #315C2B */
+/* Persian Red = #C84630 */
+/* Harvest Gold = #E59500 */
+/* Gainsboro = #E5DADA */
+/* end colors */
+
 body, html {
   margin: 0px;
   padding: 0px;
+  background-color: #E5DADA;
+  color: #0A100D;
 }
 .side-bar {
-  border-right: 1px solid black;
   flex-grow: 1;
+  height: 100vh;
+  max-width: 33%;
+  overflow: auto;
 }
 .side-bar h1 {
   text-align: center;
 }
 
+#sidebar-toggle {
+  background-color: grey;
+  height: 40px;
+  width: 10px;
+  border-radius: 0px 5px 5px 0px ;
+  border-right: 1px solid darkgrey;
+  margin-top: 45vh;
+  position: absolute;
+  z-index: 2;
+}
+
+.icon-toggle-bar {
+  height: 30px;
+  width: 0px;
+  margin-top: 3px;
+  border: 1px solid lightgrey; 
+}
+.left-bar {
+  float: left;
+  margin-left: 2px;
+}
+.right-bar {
+  float: right;
+  margin-right: 1px;
+}
+.divider {
+  border-left: 1px solid darkgrey;
+  border-right: 1px solid darkgrey;
+  background-color: grey;
+  width: 3px;
+  height: 100vh;
+  position: relative;
+  z-index: 1; 
+  /* display: flex; */
+  /* align-items: center; */
+}
+
 .main-work-space {
   flex-grow: 3;
+  height:100vh;
 }
 .main-work-space h1 {
   text-align: center;
@@ -19,4 +69,44 @@ body, html {
 
 .window {
   display: flex;
+}
+
+.header-bar {
+ height: 45px; 
+ background-color: #315C2B;
+ padding: none;
+ margin: 0px; 
+}
+
+.header-title {
+  text-align: center;
+  display: block;
+  padding-top: 12px;
+  font-size: 20px;
+}
+
+.header-bar-btns {
+ position: fixed;
+ top: 8px;
+ right: 15px;
+}
+
+#note-btn {
+  font-size: 20px;  
+}
+
+.note-block {
+  min-height: 35px;
+  border: 1px solid #0A100D;
+  padding: 5px; 
+}
+
+.notepad-container {
+  width: 90%;
+  margin: 15px auto;
+}
+
+.note {
+  background-color: white;
+  min-height: 500px;
 }

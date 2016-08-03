@@ -3,7 +3,7 @@ var ReactDom = require('react-dom');
 var Electron = require('electron');
 var MainWorkSpace = require('./main_workspace');
 var SideBar = require('./sidebar');
-
+var Divider = require('./divider');
 const shell = require('electron').shell;
 const os = require('os');
 
@@ -14,18 +14,20 @@ Electron.ipcRenderer.on('ping', (event, message) => {
 var App = React.createClass({
   getInitialState: function () {
     return {
-      windowHeight: window.innerHeight,
-      display: "block"
+      display: "block",
+      notes: []
     };
   },
-  handleResize: function () {
-    this.setState({ windowHeight: window.innerHeight });
-  },
   componentDidMount: function () {
-    window.addEventListener('resize', this.handleResize);
-  },
-  componentWillUnmount: function () {
-    window.removeEventListener('resize', this.handleResize);
+    var that = this;
+    const URL = "http://localhost:3000/api/notes";
+    //Fetch all notes at the moment - no filtering at all
+    var req = new Request(URL, { method: 'GET', cache: 'reload' });
+    fetch(req).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      that.setState({ notes: json.notes });
+    });
   },
   toggleVis: function () {
     if (this.state.display === "block") {
@@ -34,20 +36,15 @@ var App = React.createClass({
       this.setState({ display: "block" });
     }
   },
-  //Allows access to the open file window opens selected file in the default application
-  openFile: function () {
-    shell.showItemInFolder(os.homedir());
-  },
   render: function () {
     return React.createElement(
       'div',
       { className: 'window' },
       React.createElement(SideBar, {
         display: this.state.display,
-        windowHeight: this.state.windowHeight
-      }),
+        notes: this.state.notes }),
+      React.createElement(Divider, { toggleVis: this.toggleVis }),
       React.createElement(MainWorkSpace, {
-        toggleVis: this.toggleVis,
         openFile: this.openFile
       })
     );

@@ -11,7 +11,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 1100, height: 720})
-
+  //chromeless window option: frame: false 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/app/index.html`)
 
@@ -22,6 +22,12 @@ function createWindow () {
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.send('ping', 'Sending messages is fun!')
   });
+  // Show window once its finished loading content
+  // mainWindow.once('ready-to-show', () => {
+  //   mainWindow.show()
+  // })
+
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
