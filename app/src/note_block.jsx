@@ -8,6 +8,7 @@ var NoteBlock = React.createClass({
   },
   handleClick: function() {
     var that = this
+    this.props.noteSelect(this.props.note._id);
     setTimeout(function(){
       that.state.clicked ? that.setState({ clicked: false }) : that.setState({clicked: true})
     }, 150);
@@ -18,9 +19,9 @@ var NoteBlock = React.createClass({
     }
     return (
       <div onClick={this.handleClick} className="note-block">
-        <div>{this.props.title}</div>
+        <div>{this.props.note.subject}</div>
         <div>
-          <div style={tooltipStyle}>{this.props.createdBy}</div>
+          <div style={tooltipStyle}>control buttons go here?</div>
         </div>
       </div>
     );

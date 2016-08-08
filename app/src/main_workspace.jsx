@@ -1,14 +1,13 @@
 var React = require('react');
 var MainHeaderBar = require('./main_headerbar');
-var NotePad = require('./notepad');
 
 var MainWorkSpace = React.createClass({
   render: function(){
     return (
       <div className="main-work-space">
-        <MainHeaderBar />
+        <MainHeaderBar addNote={this.props.addNote}/>
         <div className="notepad-container">
-          <NotePad />
+          {this.props.notePads} 
         </div>
       </div>
     );

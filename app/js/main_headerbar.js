@@ -19,9 +19,14 @@ var MainHeaderBar = React.createClass({
         'div',
         { className: 'header-bar-btns' },
         React.createElement(
-          'button',
-          { id: 'note-btn', onClick: this.maximize },
-          '+'
+          'span',
+          { onClick: this.props.addNote },
+          React.createElement('i', { className: 'fa fa-plus', 'aria-hidden': 'true' })
+        ),
+        React.createElement(
+          'span',
+          null,
+          React.createElement('i', { className: 'fa fa-search', 'aria-hidden': 'true' })
         )
       )
     );

@@ -6,18 +6,18 @@ var $ = require('jQuery');
 
 var SideBar = React.createClass({
   render: function(){
-    var styles = {
-      display: this.props.display
-    }
     var notes = this.props.notes.map(function(note){
       return <NoteBlock key={note._id} 
-                        title={note.title}
+                        note={note}
+                        noteSelect={this.props.noteSelect}
                         createdBy={"William Stanley(placeholder)"} />
-                        });
+                        }.bind(this));
     return (
-      <div style={styles} className="side-bar" >
+      <div className="side-bar" >
         <SideHeaderBar />
-        {notes}
+        <div className="note-block-container">
+          {notes}
+        </div>
       </div>
     );
   }

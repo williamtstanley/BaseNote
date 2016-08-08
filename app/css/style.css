@@ -1,52 +1,39 @@
 /* colors */
-/* Smokey Black = #0A100D */
 /* Mughal green = #315C2B */
 /* Persian Red = #C84630 */
 /* Harvest Gold = #E59500 */
 /* Gainsboro = #E5DADA */
+/* sidebar grey = #282c34 */
 /* end colors */
 
 body, html {
   margin: 0px;
   padding: 0px;
   background-color: #E5DADA;
-  color: #0A100D;
+  color: #282c34;
 }
+
+.window {
+  display: flex;
+}
+
 .side-bar {
   flex-grow: 1;
   height: 100vh;
-  max-width: 33%;
+  max-width: 25%;
   overflow: auto;
+  background-color: #282c34;
+  color: #abb2bf;
+  font-size:14px;
 }
 .side-bar h1 {
   text-align: center;
 }
 
-#sidebar-toggle {
-  background-color: grey;
-  height: 40px;
-  width: 10px;
-  border-radius: 0px 5px 5px 0px ;
-  border-right: 1px solid darkgrey;
-  margin-top: 45vh;
-  position: absolute;
-  z-index: 2;
+.note-block-container {
+  /* overflow: auto; */
 }
 
-.icon-toggle-bar {
-  height: 30px;
-  width: 0px;
-  margin-top: 3px;
-  border: 1px solid lightgrey; 
-}
-.left-bar {
-  float: left;
-  margin-left: 2px;
-}
-.right-bar {
-  float: right;
-  margin-right: 1px;
-}
 .divider {
   border-left: 1px solid darkgrey;
   border-right: 1px solid darkgrey;
@@ -62,20 +49,22 @@ body, html {
 .main-work-space {
   flex-grow: 3;
   height:100vh;
+  overflow: auto;
 }
 .main-work-space h1 {
   text-align: center;
 }
 
-.window {
-  display: flex;
-}
 
 .header-bar {
  height: 45px; 
- background-color: #315C2B;
  padding: none;
- margin: 0px; 
+ margin: 0px;
+ position: static; 
+}
+
+.header-bar-left {
+  background-color: #282c34;
 }
 
 .header-title {
@@ -87,8 +76,19 @@ body, html {
 
 .header-bar-btns {
  position: fixed;
- top: 8px;
+ top: 15px;
  right: 15px;
+}
+
+.header-bar-btns span:hover { 
+  color: #abb2bf;
+  -webkit-text-stroke: 1px black;
+}
+
+.header-bar-btns span {
+  margin-right: 15px;
+  margin-top: 15px;
+  font-size: 20px;
 }
 
 #note-btn {
@@ -97,7 +97,7 @@ body, html {
 
 .note-block {
   min-height: 35px;
-  border: 1px solid #0A100D;
+  border-bottom: 1px solid #21252b;
   padding: 5px; 
 }
 
@@ -108,5 +108,45 @@ body, html {
 
 .note {
   background-color: white;
-  min-height: 500px;
+  min-height: 300px;
+  margin-bottom: 15px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1%;
+}
+
+.button-container button {
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.button-container button span {
+  margin-left: 5px;
+}
+
+.quill-toolbar {
+  text-align: center;
+}
+
+.quill-contents.ql-container {
+  font-size:14px;  
+}
+
+.input-container {
+  padding: 5px;
+}
+
+input {
+  border: none;
+  padding: 0 10px;
+  margin: 0;
+  font-size: 14px;
+  width: 140px;
+  border-bottom: 1px solid black;
+  background: none;
+  margin-left: 5px;
+}
+

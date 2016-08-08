@@ -5,7 +5,7 @@ var SideHeaderBar = React.createClass({
   render: function () {
     return React.createElement(
       'div',
-      { className: 'header-bar' },
+      { className: 'header-bar header-bar-left' },
       React.createElement(
         'div',
         null,
