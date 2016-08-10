@@ -163,6 +163,9 @@ var App = React.createClass({
     console.log("search toggle clicked")
     this.state.searchOpen ? this.setState({searchOpen: false}) : this.setState({searchOpen: true})
   },
+  searchSelect: function(selection){
+    console.log(selection)
+  },
   render: function() {
     return (
       <div className="window">
@@ -182,7 +185,10 @@ var App = React.createClass({
           openFile={this.openFile}
           notePads={this.state.notePads}
         />
-        <Search open={this.state.searchOpen}/>
+        <Search 
+          open={this.state.searchOpen}
+          searchSelect={this.searchSelect}
+        />
       </div>
     );
   }

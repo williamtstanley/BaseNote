@@ -1,4 +1,5 @@
 var React = require('react');
+var SearchField = require('./search_field');
 
 var SearchSideBar = React.createClass({
   render: function(){
@@ -7,7 +8,8 @@ var SearchSideBar = React.createClass({
     }
     return (
       <div style={styles} className="search" >
-        this is the company note search machine
+        <span className="header-title">Company Search</span>
+        <SearchField searchSelect={this.props.searchSelect}/>
       </div>
     );
   }
