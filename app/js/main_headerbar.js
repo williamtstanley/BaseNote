@@ -25,7 +25,7 @@ var MainHeaderBar = React.createClass({
         ),
         React.createElement(
           'span',
-          null,
+          { onClick: this.props.toggleSearch },
           React.createElement('i', { className: 'fa fa-search', 'aria-hidden': 'true' })
         )
       )

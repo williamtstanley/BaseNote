@@ -10,11 +10,16 @@ var SideBar = React.createClass({
       return <NoteBlock key={note._id} 
                         note={note}
                         noteSelect={this.props.noteSelect}
-                        createdBy={"William Stanley(placeholder)"} />
+                         />
                         }.bind(this));
     return (
       <div className="side-bar" >
-        <SideHeaderBar />
+        <SideHeaderBar
+          users={this.props.users}
+          currentUser={this.props.currentUser}
+          loginUser={this.props.loginUser}
+          logoutUser={this.props.logoutUser}
+        />
         <div className="note-block-container">
           {notes}
         </div>

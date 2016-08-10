@@ -20,7 +20,7 @@ body, html {
 .side-bar {
   flex-grow: 1;
   height: 100vh;
-  max-width: 25%;
+  max-width: 20%;
   overflow: auto;
   background-color: #282c34;
   color: #abb2bf;
@@ -30,24 +30,22 @@ body, html {
   text-align: center;
 }
 
+.user-control-container {
+  min-height: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #21252b;
+}
+
 .note-block-container {
   /* overflow: auto; */
 }
 
-.divider {
-  border-left: 1px solid darkgrey;
-  border-right: 1px solid darkgrey;
-  background-color: grey;
-  width: 3px;
-  height: 100vh;
-  position: relative;
-  z-index: 1; 
-  /* display: flex; */
-  /* align-items: center; */
-}
-
 .main-work-space {
-  flex-grow: 3;
+  flex-grow: 4;
+  max-width: 80%;
   height:100vh;
   overflow: auto;
 }
@@ -55,12 +53,49 @@ body, html {
   text-align: center;
 }
 
+.note-display {
+  width: 90%;
+  margin: 15px auto;
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+#subject-container {
+  margin-bottom: 15px;
+}
+#subject-label {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+#note-body-container {
+  display: flex;
+  min-height: 300px;
+}
+
+#body-label {
+  margin-right: 15px;
+  font-weight: bold;
+}
 
 .header-bar {
- height: 45px; 
+ min-height: 45px; 
  padding: none;
  margin: 0px;
  position: static; 
+}
+
+.search {
+  float: right;
+  height: 100vh;
+  max-width: 20%;
+  min-width: 20vw;
+  overflow: auto;
+  background-color: #282c34;
+  color: #abb2bf;
+  font-size:14px;
+
 }
 
 .header-bar-left {
@@ -75,9 +110,7 @@ body, html {
 }
 
 .header-bar-btns {
- position: fixed;
- top: 15px;
- right: 15px;
+  float: right;
 }
 
 .header-bar-btns span:hover { 
@@ -99,6 +132,7 @@ body, html {
   min-height: 35px;
   border-bottom: 1px solid #21252b;
   padding: 5px; 
+  cursor: pointer;
 }
 
 .notepad-container {

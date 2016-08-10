@@ -1,19 +1,24 @@
 var React = require('react');
-const remote = require('electron').remote;
+var UserMenu = require("./user_menu");
 
 var SideHeaderBar = React.createClass({
   render: function () {
     return React.createElement(
-      'div',
-      { className: 'header-bar header-bar-left' },
+      "div",
+      { className: "header-bar header-bar-left" },
       React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-          'span',
-          { className: 'header-title' },
-          'Pending Action'
-        )
+          "span",
+          { className: "header-title" },
+          "Pending Action"
+        ),
+        React.createElement(UserMenu, {
+          loginUser: this.props.loginUser,
+          logoutUser: this.props.logoutUser,
+          currentUser: this.props.currentUser,
+          users: this.props.users })
       )
     );
   }

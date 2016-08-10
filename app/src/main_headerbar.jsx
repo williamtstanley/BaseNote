@@ -10,7 +10,7 @@ var MainHeaderBar = React.createClass({
         </div>
         <div className="header-bar-btns">
           <span onClick={this.props.addNote}><i className="fa fa-plus" aria-hidden="true"></i></span>
-          <span><i className="fa fa-search" aria-hidden="true"></i></span>
+          <span onClick={this.props.toggleSearch}><i className="fa fa-search" aria-hidden="true"></i></span>
         </div>
       </div>
     )
