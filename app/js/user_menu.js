@@ -11,15 +11,12 @@ var UserMenu = React.createClass({
       value: { value: "default", label: "Please select a user" }
     };
   },
-  openClick: function (e) {
-    this.setState({ open: true });
+  menuClick: function () {
+    this.state.open ? this.setState({ open: false }) : this.setState({ open: true });
     var options = this.props.users.map(function (user) {
       return { value: user._id, label: user.firstName + " " + user.lastName };
     });
     this.setState({ options: options, users: this.props.users });
-  },
-  closeClick: function () {
-    this.setState({ open: false });
   },
   logChange: function (val) {
     var user = this.state.users.filter(function (user) {
@@ -46,7 +43,7 @@ var UserMenu = React.createClass({
       ),
       React.createElement(
         'span',
-        { style: { float: "right" }, onClick: this.openClick },
+        { style: { float: "right" }, onClick: this.menuClick },
         React.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
       ),
       React.createElement(
@@ -65,11 +62,6 @@ var UserMenu = React.createClass({
             'button',
             { onClick: this.logoutBtnClick },
             'Logout'
-          ),
-          React.createElement(
-            'span',
-            { style: { float: "right" }, onClick: this.closeClick },
-            React.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' })
           )
         )
       )

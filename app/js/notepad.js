@@ -1,10 +1,12 @@
 var React = require('react');
 var ReactQuill = require('react-quill');
+var SearchField = require('./search_field');
 
 var NotePad = React.createClass({
   getInitialState: function () {
     return {
-      text: this.props.text
+      text: this.props.text,
+      company: {}
     };
   },
   focusEditor: function () {
@@ -16,6 +18,7 @@ var NotePad = React.createClass({
   saveNote: function () {
     var data = {
       subject: this.refs.subject.value,
+      company_id: this.state.company._id,
       body: this.state.text
     };
     this.props.saveNote(data);
@@ -23,6 +26,9 @@ var NotePad = React.createClass({
   },
   closeNote: function () {
     this.props.removeNote(this.props.dataId);
+  },
+  noteSearchSelect: function (company) {
+    this.setState({ company: company });
   },
   render: function () {
     return React.createElement(
@@ -39,7 +45,17 @@ var NotePad = React.createClass({
         React.createElement('input', { ref: 'subject', className: 'text-input', name: 'subject', type: 'text' }),
         React.createElement(
           'span',
-          { style: { float: "right" }, onClick: this.closeNote },
+          null,
+          'Company: '
+        ),
+        React.createElement(SearchField, {
+          id: 'search-container',
+          companies: this.props.companies,
+          noteSearchSelect: this.noteSearchSelect
+        }),
+        React.createElement(
+          'span',
+          { className: 'close-btn', onClick: this.closeNote },
           React.createElement('i', { className: 'fa fa-times', 'aria-hidden': 'true' })
         )
       ),

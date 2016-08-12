@@ -1,10 +1,12 @@
 var React = require('react');
 var ReactQuill = require('react-quill');
+var SearchField = require('./search_field')
 
 var NotePad = React.createClass({
   getInitialState: function(){
     return {
-      text: this.props.text
+      text: this.props.text,
+      company: {}
     }
   },
   focusEditor: function(){
@@ -16,6 +18,7 @@ var NotePad = React.createClass({
   saveNote: function(){
     var data = {
       subject: this.refs.subject.value,
+      company_id: this.state.company._id,
       body: this.state.text
     }
     this.props.saveNote(data);
@@ -24,13 +27,22 @@ var NotePad = React.createClass({
   closeNote: function(){
     this.props.removeNote(this.props.dataId)
   },
+  noteSearchSelect: function(company){
+    this.setState({company: company})
+  },
   render: function() {
     return (
       <div className="note">
         <div className="input-container">
           <span>Subject:</span>
           <input ref="subject" className="text-input" name="subject" type="text" />
-          <span style={{float: "right"}}onClick={this.closeNote}><i className="fa fa-times" aria-hidden="true"></i></span>
+          <span>Company: </span>
+          <SearchField 
+            id="search-container"
+            companies={this.props.companies}
+            noteSearchSelect={this.noteSearchSelect}
+          />
+          <span className="close-btn" onClick={this.closeNote}><i className="fa fa-times" aria-hidden="true"></i></span>
         </div>  
         <div>
           <div onClick={this.focusEditor}>

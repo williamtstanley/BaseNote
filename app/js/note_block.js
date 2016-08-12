@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 
 var NoteBlock = React.createClass({
   getInitialState: function () {
@@ -7,16 +8,9 @@ var NoteBlock = React.createClass({
     };
   },
   handleClick: function () {
-    var that = this;
     this.props.noteSelect(this.props.note._id);
-    setTimeout(function () {
-      that.state.clicked ? that.setState({ clicked: false }) : that.setState({ clicked: true });
-    }, 150);
   },
   render: function () {
-    var tooltipStyle = {
-      display: this.state.clicked ? 'block' : 'none'
-    };
     return React.createElement(
       'div',
       { onClick: this.handleClick, className: 'note-block' },
@@ -30,8 +24,9 @@ var NoteBlock = React.createClass({
         null,
         React.createElement(
           'div',
-          { style: tooltipStyle },
-          'control buttons go here?'
+          null,
+          'Created: ',
+          moment(this.props.note.created_at).format("MMM-DD-YYYY")
         )
       )
     );

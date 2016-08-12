@@ -1,26 +1,6 @@
 var React = require('react');
 var Autosuggest = require('react-autosuggest');
 
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'Elm',
-    year: 2012
-  }
-];
-
-function getSuggestions(value) {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0 ? [] : languages.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
-}
-
 function getSuggestionValue(suggestion) { // when suggestion is selected, this function tells
   return suggestion.name;                 // what should be the value of the input
 }
@@ -35,8 +15,16 @@ var SearchField = React.createClass({
   getInitialState: function(){
     return {
       value: '',
-      suggestions: getSuggestions('')
+      suggestions: this.getSuggestions('')
     };
+  },
+  getSuggestions: function(value){
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0 ? [] : this.props.companies.filter(company =>
+      company.name.toLowerCase().slice(0, inputLength) === inputValue
+    ); 
   },
   onChange: function(event, { newValue }) {
     this.setState({
@@ -45,16 +33,21 @@ var SearchField = React.createClass({
   },
   onSuggestionsUpdateRequested: function({ value }) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
   },
-  onSuggestionSelected: function(){
-    console.log(this.state.suggestions)
+  onSuggestionSelected: function(event, suggestion){
+    if (this.props.searchSelect){
+      this.props.searchSelect(suggestion.suggestion);
+    }
+    if (this.props.noteSearchSelect){
+      this.props.noteSearchSelect(suggestion.suggestion);
+    }
   },
   render: function() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: 'Type a programming language',
+      placeholder: 'Company name...',
       value,
       onChange: this.onChange
     };

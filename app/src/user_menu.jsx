@@ -12,15 +12,12 @@ var UserMenu = React.createClass({
       value: {value: "default", label: "Please select a user"}
     }
   },
-  openClick: function(e){
-    this.setState({open: true})
+  menuClick: function(){
+    this.state.open ? this.setState({open: false}) : this.setState({open: true})
     var options = this.props.users.map(function(user){
       return {value: user._id, label: user.firstName + " " + user.lastName}
     });
     this.setState({options: options, users: this.props.users})
-  },
-  closeClick: function(){
-    this.setState({open: false})
   },
   logChange: function(val){
     var user = this.state.users.filter(function(user){
@@ -40,7 +37,7 @@ var UserMenu = React.createClass({
    return (
     <div className="user-control-container">
       <span>{this.props.currentUser.firstName + " " + this.props.currentUser.lastName}</span>
-      <span style={{float: "right"}} onClick={this.openClick}><i className="fa fa-bars" aria-hidden="true"></i></span>
+      <span style={{float: "right"}} onClick={this.menuClick}><i className="fa fa-bars" aria-hidden="true"></i></span>
       <div>
         <div style={menuStyle}>
           <Select
@@ -50,7 +47,6 @@ var UserMenu = React.createClass({
               onChange={this.logChange}
           />
           <button onClick={this.logoutBtnClick}>Logout</button>
-          <span style={{float: "right"}} onClick={this.closeClick}><i className="fa fa-times" aria-hidden="true"></i></span>
         </div>
       </div>
     </div>

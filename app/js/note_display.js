@@ -1,13 +1,23 @@
 var React = require('react');
 
 var NoteDisplay = React.createClass({
+  getInitialState: function () {
+    return {
+      completed: this.props.note.completed
+    };
+  },
   renderHtmlString: function (htmlString) {
     return { __html: htmlString };
   },
   closeNoteDisplay: function () {
     this.props.closeNoteDisplay();
   },
+  updateNote: function () {
+    this.props.completeNote(this.props.note._id);
+    this.setState({ completed: true });
+  },
   render: function () {
+    var completed = this.state.completed ? "True" : "False";
     return React.createElement(
       "div",
       { className: "note-display" },
@@ -20,6 +30,12 @@ var NoteDisplay = React.createClass({
           "Subject:"
         ),
         this.props.note.subject,
+        React.createElement(
+          "span",
+          { id: "company-label" },
+          "Company: "
+        ),
+        this.props.company.name,
         React.createElement(
           "span",
           { style: { float: "right" }, onClick: this.closeNoteDisplay },
@@ -35,6 +51,20 @@ var NoteDisplay = React.createClass({
           "Body: "
         ),
         React.createElement("div", { id: "body-text", dangerouslySetInnerHTML: this.renderHtmlString(this.props.note.body) })
+      ),
+      React.createElement(
+        "div",
+        { className: "note-display-footer" },
+        React.createElement(
+          "div",
+          null,
+          "Completed: ",
+          React.createElement(
+            "button",
+            { onClick: this.updateNote },
+            completed
+          )
+        )
       )
     );
   }

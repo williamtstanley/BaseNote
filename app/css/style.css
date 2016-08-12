@@ -19,8 +19,9 @@ body, html {
 
 .side-bar {
   flex-grow: 1;
-  height: 100vh;
   max-width: 20%;
+  min-width: 20vw;
+  height: 100vh;
   overflow: auto;
   background-color: #282c34;
   color: #abb2bf;
@@ -29,6 +30,18 @@ body, html {
 .side-bar h1 {
   text-align: center;
 }
+.completed-notes {
+  flex-grow:1;
+  position: fixed;
+  bottom: 0;
+  max-width: 18%;
+  min-width: 19vw;
+  overflow: auto;
+  background-color: #282c34;
+  color: #abb2bf;
+  font-size:14px;
+  padding: 4px;
+}
 
 .user-control-container {
   min-height: 15px;
@@ -36,11 +49,9 @@ body, html {
   margin-top: 10px;
   margin-bottom: 5px;
   padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-bottom: 1px solid #21252b;
-}
-
-.note-block-container {
-  /* overflow: auto; */
 }
 
 .main-work-space {
@@ -60,13 +71,25 @@ body, html {
   margin-bottom: 15px;
   padding: 15px;
 }
+.note-display-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px lightgrey solid;
+}
 
 #subject-container {
   margin-bottom: 15px;
 }
+
 #subject-label {
   font-weight: bold;
-  margin-right: 15px;
+  margin-right: 5px;
+}
+
+#company-label {
+  font-weight: bold;
+  margin-right: 5px;
+  margin-left: 15px;
 }
 
 #note-body-container {
@@ -87,10 +110,16 @@ body, html {
 }
 
 .search {
-  float: right;
-  height: 100vh;
+  /* float: right; */
+  /* height: 100vh; */
   max-width: 20%;
   min-width: 20vw;
+  /* overflow: auto; */
+  /* background-color: #282c34; */
+  /* color: #abb2bf; */
+  /* font-size:14px; */
+  flex-grow: 1;
+  height: 100vh;
   overflow: auto;
   background-color: #282c34;
   color: #abb2bf;
@@ -100,11 +129,11 @@ body, html {
 
 .react-autosuggest__input {
   width: 100%;
-  height: 24px;
+  height: 20px;
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 16px;
   border: 1px solid #aaa;
 }
@@ -179,7 +208,7 @@ body, html {
 .note-block {
   min-height: 35px;
   border-bottom: 1px solid #21252b;
-  padding: 5px; 
+  padding: 10px 5px;
   cursor: pointer;
 }
 
@@ -219,14 +248,21 @@ body, html {
 
 .input-container {
   padding: 5px;
+  display: flex;
 }
+
+.close-btn {
+  text-align: right;
+  margin-left: auto;
+}
+
 
 .input-container input {
   border: none;
   padding: 0 10px;
   margin: 0;
   font-size: 14px;
-  width: 140px;
+  width: 165px;
   border-bottom: 1px solid black;
   background: none;
   margin-left: 5px;
